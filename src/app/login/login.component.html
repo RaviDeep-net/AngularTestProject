@@ -1,0 +1,26 @@
+<div>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <table>
+            <tr>
+                <td><label for="Username">UserName</label></td>
+                <td><input type="text" #nameRef formControlName="loginName" required></td>
+                <span class="text-danger"
+                *ngIf="loginForm.get('loginName').touched && !loginForm.get('loginName').valid">
+                Username is required
+            </span>
+            </tr>
+
+            <tr>
+                <td> <label for="Password">Password</label></td>
+                <td><input type="password" formControlName="loginPassword" required></td>
+                <span class="text-danger"
+                *ngIf="loginForm.get('loginPassword').touched">
+                Password is required
+            </span>
+            </tr>
+            <tr style="column-span: 2">
+                <button type="submit" [disabled]="!loginForm.valid" class="btn btn-success">Login</button>
+            </tr>
+        </table>
+    </form>
+</div>
